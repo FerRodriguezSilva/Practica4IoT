@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800" role="img" aria-labelledby="title desc">
+  <title id="title">Mockups de reportes</title>
+  <desc id="desc">Pantallas propuestas para analisis de telemetria del ventilador inteligente.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f8fafc}
+      .panel{fill:#ffffff;stroke:#d1d5db;stroke-width:2;rx:8}
+      .header{fill:#111827}
+      .text{font-family:Arial, Helvetica, sans-serif;font-size:18px;fill:#111827}
+      .title{font-family:Arial, Helvetica, sans-serif;font-size:22px;fill:#111827;font-weight:700}
+      .small{font-family:Arial, Helvetica, sans-serif;font-size:13px;fill:#4b5563}
+      .muted{fill:#6b7280}
+      .blue{fill:#2563eb}
+      .green{fill:#16a34a}
+      .red{fill:#dc2626}
+      .amber{fill:#d97706}
+      .line{stroke:#2563eb;stroke-width:4;fill:none}
+      .grid{stroke:#e5e7eb;stroke-width:1}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="800"/>
+  <text class="title" x="55" y="55">Mockups de reportes para toma de decisiones</text>
+  <text class="small" x="55" y="80">Vista diaria/semanal basada en registros enviados desde AWS IoT Core hacia DynamoDB.</text>
+
+  <rect class="panel" x="55" y="115" width="270" height="120"/>
+  <text class="small" x="80" y="145">Temperatura promedio</text>
+  <text class="title blue" x="80" y="190">27.4 C</text>
+  <text class="small" x="80" y="215">Max: 32.1 C | Min: 24.0 C</text>
+
+  <rect class="panel" x="355" y="115" width="270" height="120"/>
+  <text class="small" x="380" y="145">Humedad promedio</text>
+  <text class="title green" x="380" y="190">58 %</text>
+  <text class="small" x="380" y="215">Rango normal del ambiente</text>
+
+  <rect class="panel" x="655" y="115" width="270" height="120"/>
+  <text class="small" x="680" y="145">Tiempo encendido</text>
+  <text class="title amber" x="680" y="190">4 h 20 min</text>
+  <text class="small" x="680" y="215">Velocidad media: 43 %</text>
+
+  <rect class="panel" x="955" y="115" width="270" height="120"/>
+  <text class="small" x="980" y="145">Alertas de temperatura</text>
+  <text class="title red" x="980" y="190">3</text>
+  <text class="small" x="980" y="215">Temp >= umbral configurado</text>
+
+  <rect class="panel" x="55" y="275" width="560" height="270"/>
+  <text class="text" x="85" y="315" font-weight="700">Temperatura y velocidad por hora</text>
+  <line class="grid" x1="95" y1="500" x2="570" y2="500"/>
+  <line class="grid" x1="95" y1="455" x2="570" y2="455"/>
+  <line class="grid" x1="95" y1="410" x2="570" y2="410"/>
+  <line class="grid" x1="95" y1="365" x2="570" y2="365"/>
+  <path class="line" d="M105 475 C160 440 190 450 235 420 C280 385 310 390 350 360 C400 332 430 370 470 352 C510 335 535 350 565 330"/>
+  <rect class="blue" x="120" y="450" width="22" height="50"/>
+  <rect class="blue" x="190" y="430" width="22" height="70"/>
+  <rect class="blue" x="260" y="410" width="22" height="90"/>
+  <rect class="blue" x="330" y="382" width="22" height="118"/>
+  <rect class="blue" x="400" y="425" width="22" height="75"/>
+  <rect class="blue" x="470" y="395" width="22" height="105"/>
+  <text class="small" x="95" y="525">08:00</text>
+  <text class="small" x="235" y="525">12:00</text>
+  <text class="small" x="375" y="525">16:00</text>
+  <text class="small" x="515" y="525">20:00</text>
+
+  <rect class="panel" x="655" y="275" width="570" height="270"/>
+  <text class="text" x="685" y="315" font-weight="700">Eventos relevantes</text>
+  <line class="grid" x1="685" y1="345" x2="1195" y2="345"/>
+  <line class="grid" x1="685" y1="390" x2="1195" y2="390"/>
+  <line class="grid" x1="685" y1="435" x2="1195" y2="435"/>
+  <line class="grid" x1="685" y1="480" x2="1195" y2="480"/>
+  <text class="small" x="700" y="372">10:05</text>
+  <text class="small" x="795" y="372">Alexa cambio velocidad a 75%</text>
+  <text class="small" x="1090" y="372">Remoto</text>
+  <text class="small" x="700" y="417">13:40</text>
+  <text class="small" x="795" y="417">Modo automatico activado</text>
+  <text class="small" x="1090" y="417">Auto</text>
+  <text class="small" x="700" y="462">14:15</text>
+  <text class="small" x="795" y="462">Temperatura supero umbral</text>
+  <text class="small" x="1090" y="462">Alerta</text>
+  <text class="small" x="700" y="507">18:20</text>
+  <text class="small" x="795" y="507">Potenciometro en rango 50%</text>
+  <text class="small" x="1090" y="507">Manual</text>
+
+  <rect class="panel" x="55" y="585" width="1170" height="150"/>
+  <text class="text" x="85" y="625" font-weight="700">Decision sugerida</text>
+  <text class="small" x="85" y="657">1. Ajustar el umbral automatico si existen muchas alertas de temperatura.</text>
+  <text class="small" x="85" y="684">2. Revisar horas de mayor uso para optimizar consumo y confort.</text>
+  <text class="small" x="85" y="711">3. Detectar lecturas anomalas del sensor para planificar mantenimiento.</text>
+</svg>

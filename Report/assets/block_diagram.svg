@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama de bloques del ventilador inteligente</title>
+  <desc id="desc">Bloques principales del objeto inteligente, nube AWS y control por Alexa.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#1f2937"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .box{fill:#ffffff;stroke:#1f2937;stroke-width:2;rx:8}
+      .primary{fill:#dbeafe;stroke:#1d4ed8}
+      .sensor{fill:#dcfce7;stroke:#15803d}
+      .actuator{fill:#fee2e2;stroke:#b91c1c}
+      .cloud{fill:#fef3c7;stroke:#b45309}
+      .ui{fill:#ede9fe;stroke:#6d28d9}
+      .text{font-family:Arial, Helvetica, sans-serif;font-size:20px;fill:#111827}
+      .small{font-family:Arial, Helvetica, sans-serif;font-size:15px;fill:#374151}
+      .line{stroke:#1f2937;stroke-width:2.5;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#4b5563;stroke-width:2;stroke-dasharray:7 6;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="700"/>
+  <text class="text" x="390" y="48" font-weight="700">Diagrama de bloques - Ventilador Inteligente IoT</text>
+
+  <rect class="box primary" x="480" y="250" width="240" height="155"/>
+  <text class="text" x="555" y="298" font-weight="700">ESP32</text>
+  <text class="small" x="515" y="332">Firmware Arduino</text>
+  <text class="small" x="515" y="356">MQTT TLS + Shadow</text>
+  <text class="small" x="515" y="380">Control local y remoto</text>
+
+  <rect class="box sensor" x="80" y="120" width="230" height="92"/>
+  <text class="text" x="136" y="158" font-weight="700">DHT11</text>
+  <text class="small" x="112" y="184">Temperatura y humedad</text>
+
+  <rect class="box sensor" x="80" y="300" width="230" height="92"/>
+  <text class="text" x="112" y="338" font-weight="700">Potenciometro</text>
+  <text class="small" x="112" y="364">Entrada manual 0-100%</text>
+
+  <rect class="box actuator" x="80" y="480" width="230" height="92"/>
+  <text class="text" x="126" y="518" font-weight="700">Motor DC</text>
+  <text class="small" x="112" y="544">PWM por driver/ENA</text>
+
+  <rect class="box" x="890" y="120" width="230" height="92"/>
+  <text class="text" x="940" y="158" font-weight="700">OLED 0.96"</text>
+  <text class="small" x="922" y="184">Estado local del sistema</text>
+
+  <rect class="box cloud" x="870" y="300" width="270" height="110"/>
+  <text class="text" x="925" y="340" font-weight="700">AWS IoT Core</text>
+  <text class="small" x="920" y="366">Device Shadow</text>
+  <text class="small" x="920" y="390">MQTT: desired/reported</text>
+
+  <rect class="box ui" x="860" y="500" width="290" height="118"/>
+  <text class="text" x="930" y="540" font-weight="700">Alexa + Lambda</text>
+  <text class="small" x="895" y="568">Comandos de voz</text>
+  <text class="small" x="895" y="592">Reportes desde DynamoDB</text>
+
+  <path class="line" d="M310 166 C385 166 405 275 480 300"/>
+  <path class="line" d="M310 346 L480 330"/>
+  <path class="line" d="M480 360 C410 430 380 510 310 526"/>
+  <path class="line" d="M720 292 C790 230 820 170 890 166"/>
+  <path class="line" d="M720 340 L870 350"/>
+  <path class="dash" d="M1005 500 L1005 410"/>
+  <path class="dash" d="M870 360 C790 450 760 500 720 390"/>
+
+  <text class="small" x="342" y="150">Lecturas</text>
+  <text class="small" x="350" y="324">Rangos</text>
+  <text class="small" x="350" y="514">PWM</text>
+  <text class="small" x="770" y="250">I2C</text>
+  <text class="small" x="750" y="332">WiFi/MQTT</text>
+  <text class="small" x="1018" y="456">Intent</text>
+</svg>

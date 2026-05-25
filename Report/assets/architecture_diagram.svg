@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="760" viewBox="0 0 1280 760" role="img" aria-labelledby="title desc">
+  <title id="title">Arquitectura del sistema con AWS y Alexa</title>
+  <desc id="desc">Flujo entre Alexa, Lambda, AWS IoT Shadow, ESP32, DynamoDB y reportes.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#111827"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .zone{fill:#eef2ff;stroke:#6366f1;stroke-width:2;rx:12}
+      .aws{fill:#fff7ed;stroke:#f97316;stroke-width:2;rx:12}
+      .box{fill:#ffffff;stroke:#111827;stroke-width:2;rx:8}
+      .device{fill:#dcfce7;stroke:#15803d}
+      .data{fill:#ecfeff;stroke:#0891b2}
+      .text{font-family:Arial, Helvetica, sans-serif;font-size:19px;fill:#111827}
+      .small{font-family:Arial, Helvetica, sans-serif;font-size:14px;fill:#374151}
+      .line{stroke:#111827;stroke-width:2.6;fill:none;marker-end:url(#arrow)}
+      .dash{stroke:#4b5563;stroke-width:2;stroke-dasharray:7 6;fill:none;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect class="bg" width="1280" height="760"/>
+  <text class="text" x="430" y="45" font-weight="700">Diagrama de arquitectura del sistema</text>
+
+  <rect class="zone" x="55" y="105" width="270" height="555"/>
+  <text class="text" x="126" y="140" font-weight="700">Usuario</text>
+  <rect class="box" x="90" y="185" width="200" height="95"/>
+  <text class="text" x="142" y="225" font-weight="700">Alexa</text>
+  <text class="small" x="112" y="252">Skill personalizada</text>
+  <rect class="box" x="90" y="390" width="200" height="100"/>
+  <text class="text" x="140" y="430" font-weight="700">Dashboard</text>
+  <text class="small" x="112" y="458">Mockups/reportes</text>
+
+  <rect class="aws" x="380" y="105" width="540" height="555"/>
+  <text class="text" x="590" y="140" font-weight="700">AWS</text>
+  <rect class="box" x="420" y="185" width="205" height="95"/>
+  <text class="text" x="470" y="225" font-weight="700">Lambda</text>
+  <text class="small" x="450" y="252">Manejador Alexa</text>
+  <rect class="box" x="675" y="185" width="205" height="95"/>
+  <text class="text" x="710" y="225" font-weight="700">IoT Core</text>
+  <text class="small" x="707" y="252">Device Shadow</text>
+  <rect class="box data" x="675" y="370" width="205" height="95"/>
+  <text class="text" x="715" y="410" font-weight="700">DynamoDB</text>
+  <text class="small" x="704" y="437">Telemetria historica</text>
+  <rect class="box" x="420" y="370" width="205" height="95"/>
+  <text class="text" x="450" y="410" font-weight="700">Lambda Reportes</text>
+  <text class="small" x="452" y="437">Consultas/agregados</text>
+  <rect class="box" x="548" y="525" width="205" height="85"/>
+  <text class="text" x="578" y="562" font-weight="700">IoT Rule</text>
+  <text class="small" x="578" y="587">Shadow -> tabla</text>
+
+  <rect class="box device" x="990" y="185" width="220" height="280"/>
+  <text class="text" x="1045" y="225" font-weight="700">ESP32</text>
+  <text class="small" x="1020" y="256">DHT11 + OLED</text>
+  <text class="small" x="1020" y="282">Potenciometro</text>
+  <text class="small" x="1020" y="308">Motor PWM</text>
+  <text class="small" x="1020" y="334">AWSShadow.cpp</text>
+  <text class="small" x="1020" y="360">reported cada cambio</text>
+  <text class="small" x="1020" y="386">o cada 10 min</text>
+
+  <path class="line" d="M290 232 L420 232"/>
+  <path class="line" d="M625 232 L675 232"/>
+  <path class="line" d="M880 232 L990 250"/>
+  <path class="line" d="M990 335 L880 252"/>
+  <path class="dash" d="M780 280 L656 525"/>
+  <path class="line" d="M650 610 L735 465"/>
+  <path class="line" d="M675 420 L625 420"/>
+  <path class="line" d="M420 420 L290 440"/>
+
+  <text class="small" x="318" y="218">Intent</text>
+  <text class="small" x="637" y="218">UpdateThingShadow</text>
+  <text class="small" x="905" y="218">desired/delta</text>
+  <text class="small" x="905" y="330">reported</text>
+  <text class="small" x="673" y="512">Rule SQL</text>
+  <text class="small" x="630" y="408">Query</text>
+  <text class="small" x="315" y="425">KPIs</text>
+</svg>

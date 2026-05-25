@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama de circuito referencial</title>
+  <desc id="desc">Conexion de pines del ESP32 con DHT11, OLED, potenciometro y driver de motor.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#111827"/>
+    </marker>
+    <style>
+      .bg{fill:#f8fafc}
+      .board{fill:#dbeafe;stroke:#1d4ed8;stroke-width:2;rx:10}
+      .module{fill:#ffffff;stroke:#111827;stroke-width:2;rx:8}
+      .power{stroke:#dc2626;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .gnd{stroke:#374151;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .signal{stroke:#2563eb;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .pwm{stroke:#16a34a;stroke-width:3;fill:none;marker-end:url(#arrow)}
+      .text{font-family:Arial, Helvetica, sans-serif;font-size:19px;fill:#111827}
+      .small{font-family:Arial, Helvetica, sans-serif;font-size:14px;fill:#374151}
+      .pin{font-family:Consolas, monospace;font-size:14px;fill:#111827}
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1200" height="760"/>
+  <text class="text" x="420" y="44" font-weight="700">Diagrama de circuito referencial</text>
+  <text class="small" x="308" y="70">Las alimentaciones VCC/VMOT dependen del modulo usado; todos los GND deben ser comunes.</text>
+
+  <rect class="board" x="430" y="150" width="310" height="420"/>
+  <text class="text" x="552" y="190" font-weight="700">ESP32</text>
+  <text class="pin" x="460" y="240">GPIO4  - DHT DATA</text>
+  <text class="pin" x="460" y="280">GPIO35 - ADC POT</text>
+  <text class="pin" x="460" y="320">GPIO21 - I2C SDA</text>
+  <text class="pin" x="460" y="360">GPIO22 - I2C SCL</text>
+  <text class="pin" x="460" y="400">GPIO18 - DRIVER IN1</text>
+  <text class="pin" x="460" y="440">GPIO5  - PWM ENA</text>
+  <text class="pin" x="460" y="480">3V3 / VIN</text>
+  <text class="pin" x="460" y="520">GND comun</text>
+
+  <rect class="module" x="70" y="115" width="240" height="120"/>
+  <text class="text" x="148" y="155" font-weight="700">DHT11</text>
+  <text class="small" x="112" y="184">VCC, DATA, GND</text>
+
+  <rect class="module" x="70" y="300" width="240" height="120"/>
+  <text class="text" x="124" y="340" font-weight="700">Potenciometro</text>
+  <text class="small" x="112" y="369">VCC, WIPER, GND</text>
+
+  <rect class="module" x="70" y="500" width="240" height="120"/>
+  <text class="text" x="112" y="540" font-weight="700">OLED SSD1306</text>
+  <text class="small" x="112" y="569">I2C: SDA, SCL</text>
+
+  <rect class="module" x="870" y="260" width="250" height="145"/>
+  <text class="text" x="928" y="300" font-weight="700">Driver Motor</text>
+  <text class="small" x="910" y="330">IN1: direccion</text>
+  <text class="small" x="910" y="354">ENA: velocidad PWM</text>
+  <text class="small" x="910" y="378">VMOT + GND</text>
+
+  <rect class="module" x="880" y="500" width="230" height="90"/>
+  <text class="text" x="950" y="540" font-weight="700">Motor DC</text>
+  <text class="small" x="925" y="565">Salida del driver</text>
+
+  <rect class="module" x="875" y="105" width="235" height="90"/>
+  <text class="text" x="925" y="145" font-weight="700">Fuente externa</text>
+  <text class="small" x="910" y="170">VMOT segun motor</text>
+
+  <path class="signal" d="M310 175 C360 175 380 235 430 238"/>
+  <path class="signal" d="M310 360 C360 360 380 282 430 280"/>
+  <path class="signal" d="M310 535 C365 535 380 322 430 320"/>
+  <path class="signal" d="M310 565 C365 565 380 362 430 360"/>
+  <path class="signal" d="M740 400 L870 325"/>
+  <path class="pwm" d="M740 440 L870 352"/>
+  <path class="power" d="M875 150 L740 480"/>
+  <path class="power" d="M430 480 C340 455 300 150 310 150"/>
+  <path class="gnd" d="M430 520 C340 610 300 590 310 590"/>
+  <path class="gnd" d="M740 520 C830 520 845 380 870 380"/>
+  <path class="power" d="M992 195 L995 260"/>
+  <path class="signal" d="M995 405 L995 500"/>
+
+  <text class="small" x="350" y="160">GPIO4</text>
+  <text class="small" x="350" y="342">GPIO35</text>
+  <text class="small" x="348" y="522">GPIO21</text>
+  <text class="small" x="347" y="552">GPIO22</text>
+  <text class="small" x="780" y="383">GPIO18</text>
+  <text class="small" x="790" y="435">GPIO5 PWM</text>
+  <text class="small" x="782" y="514">GND</text>
+</svg>
