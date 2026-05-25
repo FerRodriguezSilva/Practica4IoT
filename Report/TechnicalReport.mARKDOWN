@@ -117,21 +117,10 @@ La integracion con Alexa se plantea mediante una Skill personalizada. Alexa envi
 
 ![Diagrama de bloques](assets/block_diagram.svg)
 
-## 2.5 Diagrama de circuito
 
-![Diagrama de circuito referencial](assets/circuit_diagram.svg)
 
-El diagrama es referencial. Para una implementacion fisica se debe verificar el driver de motor especifico, la alimentacion del motor, la corriente maxima y el uso de tierra comun.
+## 2.5 Diagrama electronico
 
-## 2.6 Diagrama electronico
-
-![Diagrama electronico](assets/electronic_diagram.svg)
-
-Este diagrama electronico representa el esquema de conexion entre el ESP32-WROOM-32, el driver L298N, el motor DC, el regulador LM1117 de 3.3 V, el potenciometro, el sensor DHT11 y la pantalla OLED SSD1306.
-
-## 2.7 Diagrama de arquitectura del sistema
-
-### ***Diagrama de Arquitectura de la Ventiladora Inteligente***
 <p align="center">
 <img src="Diagrams/Diagrama_Electronico.jpg" width="600">
 
