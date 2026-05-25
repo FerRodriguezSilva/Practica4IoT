@@ -374,6 +374,8 @@ Los reportes deben convertir la telemetria del ventilador en informacion util pa
 
 ![Mockups de reportes](assets/report_mockups.svg)
 
+![Dashboard de resumen general](assets/dashboard_report_mockup.svg)
+
 ## 4.3 Indicadores relevantes
 
 | Indicador | Fuente | Utilidad |
@@ -484,6 +486,7 @@ Practica4IoT/
 │       ├── architecture_diagram.svg
 │       ├── block_diagram.svg
 │       ├── circuit_diagram.svg
+│       ├── dashboard_report_mockup.svg
 │       ├── electronic_diagram.svg
 │       └── report_mockups.svg
 └── src/

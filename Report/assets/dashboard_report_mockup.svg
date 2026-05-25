@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Mockup dashboard de reportes del ventilador IoT</title>
+  <desc id="desc">Dashboard con resumen general, indicadores, graficas de temperatura, humedad, velocidad, estado del ventilador, resumen diario, eventos automaticos y distribucion de fuentes de control.</desc>
+  <defs>
+    <style>
+      .bg{fill:#f7f9fc}
+      .sidebar{fill:#071a3a}
+      .navActive{fill:#1458dc}
+      .card{fill:#fff;stroke:#d9e1ec;stroke-width:1.4}
+      .muted{fill:#4b587c}
+      .title{font-family:Arial,Helvetica,sans-serif;font-size:24px;font-weight:700;fill:#07123b}
+      .h2{font-family:Arial,Helvetica,sans-serif;font-size:20px;font-weight:700;fill:#07123b}
+      .text{font-family:Arial,Helvetica,sans-serif;font-size:15px;fill:#0f1b45}
+      .small{font-family:Arial,Helvetica,sans-serif;font-size:13px;fill:#4b587c}
+      .tiny{font-family:Arial,Helvetica,sans-serif;font-size:11px;fill:#4b587c}
+      .white{fill:#fff}
+      .red{fill:#ff2035}.blue{fill:#145cff}.green{fill:#158c3c}.orange{fill:#c4690a}.purple{fill:#6421dc}
+      .grid{stroke:#dfe5ee;stroke-dasharray:3 5;stroke-width:1}
+      .axis{stroke:#c6cfdd;stroke-width:1.2}
+      .lineRed{fill:none;stroke:#ff2035;stroke-width:2.5}
+      .lineBlue{fill:none;stroke:#145cff;stroke-width:2.5}
+      .lineGreen{fill:none;stroke:#158c3c;stroke-width:2.5}
+      .dashBlue{fill:none;stroke:#145cff;stroke-width:2;stroke-dasharray:7 7}
+      .areaRed{fill:#ff2035;opacity:.10}
+      .areaGreen{fill:#18a14a;opacity:.10}
+      .barGreen{fill:#35b96b;opacity:.9}
+      .barOff{fill:#f2f4f8;stroke:#d7dde8}
+      .chip{fill:#eef4ff;stroke:#cfdaf0}
+      .shadow{filter:url(#shadow)}
+    </style>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#1f2b4d" flood-opacity=".08"/>
+    </filter>
+  </defs>
+
+  <rect class="bg" width="1600" height="1000"/>
+  <rect class="sidebar" width="250" height="1000"/>
+  <path fill="#d9e4f2" d="M34 52c11-9 28-12 39-5-1 12-10 26-25 29 16 2 28 14 31 29-12 7-29 5-40-5-1 16-11 30-25 35-8-11-8-29 1-41-15 5-31 0-39-10 5-14 18-25 35-25-14-7-20-22-17-36 15-2 31 8 40 29Z" transform="scale(.7) translate(18 10)"/>
+  <circle cx="47" cy="53" r="9" fill="#071a3a" stroke="#d9e4f2" stroke-width="4"/>
+  <text class="white" x="78" y="48" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700">Ventilador IoT</text>
+  <text x="78" y="73" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#c8d4e5">Dashboard</text>
+
+  <rect class="navActive" x="18" y="112" width="214" height="45" rx="6"/>
+  <text class="white" x="72" y="140" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700">Resumen</text>
+  <text class="white" x="32" y="140" font-family="Arial,Helvetica,sans-serif" font-size="22">⌂</text>
+  <text x="72" y="191" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#e6edf7">Temperatura</text>
+  <text x="32" y="191" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#e6edf7">⌁</text>
+  <text x="72" y="238" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#e6edf7">Humedad</text>
+  <text x="32" y="238" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#e6edf7">◌</text>
+  <text x="72" y="285" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#e6edf7">Ventilador</text>
+  <text x="32" y="285" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#e6edf7">✣</text>
+  <text x="72" y="332" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#e6edf7">Eventos</text>
+  <text x="32" y="332" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#e6edf7">♢</text>
+  <text x="72" y="379" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#e6edf7">Historial</text>
+  <text x="32" y="379" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#e6edf7">◷</text>
+  <text x="72" y="426" font-family="Arial,Helvetica,sans-serif" font-size="15" fill="#e6edf7">Configuracion</text>
+  <text x="32" y="426" font-family="Arial,Helvetica,sans-serif" font-size="21" fill="#e6edf7">⚙</text>
+
+  <rect x="22" y="806" width="207" height="140" rx="8" fill="#10274f" stroke="#27436e"/>
+  <circle cx="42" cy="834" r="6" fill="#40dc72"/>
+  <text x="58" y="839" font-family="Arial,Helvetica,sans-serif" font-size="14" fill="#69ee90">Dispositivo conectado</text>
+  <text class="white" x="38" y="877" font-family="Arial,Helvetica,sans-serif" font-size="15">Esp32Ventilador</text>
+  <text x="38" y="917" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#d9e4f2">Ultima actualizacion:</text>
+  <text x="38" y="940" font-family="Arial,Helvetica,sans-serif" font-size="13" fill="#d9e4f2">22/05/2026 15:30:45</text>
+
+  <text class="title" x="280" y="43">Resumen General</text>
+  <text class="muted" x="280" y="72" font-family="Arial,Helvetica,sans-serif" font-size="15">Monitorea el estado actual de tu ventilador y las condiciones ambientales.</text>
+  <rect class="card" x="1160" y="30" width="250" height="42" rx="7"/>
+  <text class="text" x="1203" y="57">22 de Mayo, 2026</text>
+  <text class="text" x="1387" y="57">⌄</text>
+  <rect x="1432" y="30" width="135" height="42" rx="7" fill="#1458dc"/>
+  <text class="white" x="1474" y="57" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700">Actualizar</text>
+  <text class="white" x="1450" y="57" font-family="Arial,Helvetica,sans-serif" font-size="20">↻</text>
+
+  <g class="shadow">
+    <rect class="card" x="280" y="112" width="225" height="175" rx="8"/>
+    <rect class="card" x="520" y="112" width="225" height="175" rx="8"/>
+    <rect class="card" x="760" y="112" width="210" height="175" rx="8"/>
+    <rect class="card" x="985" y="112" width="210" height="175" rx="8"/>
+    <rect class="card" x="1210" y="112" width="195" height="175" rx="8"/>
+    <rect class="card" x="1420" y="112" width="158" height="175" rx="8"/>
+  </g>
+
+  <circle cx="322" cy="158" r="24" fill="#ffe6eb"/><text class="red" x="314" y="168" font-family="Arial" font-size="28">♨</text>
+  <text class="text" x="360" y="151">Temperatura Actual</text><text class="red" x="360" y="194" font-family="Arial" font-size="32" font-weight="700">21.8 C</text><text class="small" x="360" y="225">Moderada</text>
+  <path class="lineRed" d="M302 260 l8 -8 l10 5 l10 -1 l12 8 l14 -4 l11 -7 l12 -3 l13 -1 l9 -5 l13 3 l9 -9 l14 4 l8 -5 l16 11 l10 16 l9 -7 l9 5 l7 -9 l8 4"/>
+
+  <circle cx="562" cy="158" r="24" fill="#eaf1ff"/><text class="blue" x="554" y="168" font-family="Arial" font-size="28">♢</text>
+  <text class="text" x="600" y="151">Humedad Actual</text><text class="blue" x="600" y="194" font-family="Arial" font-size="32" font-weight="700">31 %</text><text class="small" x="600" y="225">Normal</text>
+  <path class="lineBlue" d="M542 260 l7 -8 l12 4 l8 7 l11 -3 l14 2 l10 -8 l12 -2 l9 4 l11 -6 l7 4 l9 -10 l12 3 l9 8 l11 10 l8 -7 l9 5 l9 -9 l9 6 l8 -6"/>
+
+  <circle cx="799" cy="158" r="24" fill="#e3f7eb"/><text class="green" x="789" y="168" font-family="Arial" font-size="27">✣</text>
+  <text class="text" x="838" y="151">Ventilador</text><text class="green" x="838" y="194" font-family="Arial" font-size="32" font-weight="700">50 %</text><text class="small" x="838" y="225">Velocidad actual</text>
+  <path class="lineGreen" d="M776 260 l8 -9 l11 5 l9 8 l14 4 l13 -4 l8 -8 l12 2 l8 -6 l10 4 l8 -7 l10 4 l11 -10 l9 1 l13 -8 l12 9 l8 10 l12 9 l8 -8 l8 6 l8 -5 l8 5"/>
+
+  <circle cx="1024" cy="158" r="24" fill="#eee5ff"/><text class="purple" x="1015" y="168" font-family="Arial" font-size="25">▣</text>
+  <text class="text" x="1062" y="151">Modo Automatico</text><text class="purple" x="1062" y="194" font-family="Arial" font-size="25" font-weight="700">Activado</text><text class="small" x="1062" y="225">Control automatico</text>
+  <path fill="none" stroke="#6421dc" stroke-width="3" d="M1004 260 L1178 260"/>
+
+  <circle cx="1247" cy="158" r="24" fill="#fff0e4"/><text class="orange" x="1239" y="168" font-family="Arial" font-size="27">♨</text>
+  <text class="text" x="1285" y="151">Umbral Temp.</text><text class="orange" x="1285" y="194" font-family="Arial" font-size="31" font-weight="700">20 C</text><text class="small" x="1285" y="225">Temperatura objetivo</text>
+  <path fill="none" stroke="#ff7a00" stroke-width="2.5" d="M1222 260 L1315 260 L1328 267 L1348 261 L1363 262 L1375 268 L1390 267"/>
+
+  <circle cx="1452" cy="158" r="24" fill="#eaf1ff"/><text class="blue" x="1445" y="168" font-family="Arial" font-size="26">◷</text>
+  <text class="text" x="1487" y="151">Tiempo Encendido</text><text class="blue" x="1487" y="194" font-family="Arial" font-size="28" font-weight="700">2h 15m</text><text class="small" x="1487" y="225">Total acumulado</text>
+  <path class="lineBlue" d="M1434 260 L1475 260 L1505 258 L1538 254 L1552 260 L1567 257"/>
+
+  <rect class="card shadow" x="280" y="304" width="690" height="255" rx="8"/>
+  <text class="h2" x="298" y="337">Temperatura vs Tiempo</text>
+  <circle class="red" cx="742" cy="333" r="4"/><text class="small" x="753" y="337">Temperatura</text>
+  <path class="dashBlue" d="M847 333 h40"/><text class="small" x="895" y="337">Umbral (20C)</text>
+  <text class="tiny" x="298" y="362">C</text>
+  <line class="grid" x1="325" y1="381" x2="943" y2="381"/><line class="grid" x1="325" y1="420" x2="943" y2="420"/><line class="grid" x1="325" y1="459" x2="943" y2="459"/><line class="axis" x1="325" y1="520" x2="943" y2="520"/>
+  <path class="areaRed" d="M325 475 C380 455 410 420 470 413 C530 409 565 389 620 374 C685 356 730 345 780 335 C802 374 842 397 882 423 C910 442 930 454 943 459 L943 520 L325 520 Z"/>
+  <path class="lineRed" d="M325 475 C380 455 410 420 470 413 C530 409 565 389 620 374 C685 356 730 345 780 335 C802 374 842 397 882 423 C910 442 930 454 943 459"/>
+  <path class="dashBlue" d="M325 456 L943 456"/>
+  <text class="small" x="334" y="540">00:00</text><text class="small" x="414" y="540">03:00</text><text class="small" x="494" y="540">06:00</text><text class="small" x="574" y="540">09:00</text><text class="small" x="654" y="540">12:00</text><text class="small" x="734" y="540">15:00</text><text class="small" x="814" y="540">18:00</text><text class="small" x="894" y="540">24:00</text>
+
+  <rect class="card shadow" x="985" y="304" width="592" height="255" rx="8"/>
+  <text class="h2" x="1003" y="337">Humedad vs Tiempo</text>
+  <text class="tiny" x="1003" y="362">%</text>
+  <line class="grid" x1="1032" y1="381" x2="1547" y2="381"/><line class="grid" x1="1032" y1="420" x2="1547" y2="420"/><line class="grid" x1="1032" y1="459" x2="1547" y2="459"/><line class="axis" x1="1032" y1="520" x2="1547" y2="520"/>
+  <path class="lineBlue" d="M1032 410 C1085 420 1120 424 1165 437 C1210 450 1246 464 1285 466 C1330 469 1385 459 1430 453 C1484 446 1512 426 1547 440"/>
+  <text class="small" x="1040" y="540">00:00</text><text class="small" x="1130" y="540">06:00</text><text class="small" x="1222" y="540">12:00</text><text class="small" x="1315" y="540">18:00</text><text class="small" x="1505" y="540">24:00</text>
+
+  <rect class="card shadow" x="280" y="574" width="690" height="190" rx="8"/>
+  <text class="h2" x="298" y="607">Velocidad del Ventilador vs Tiempo</text>
+  <text class="tiny" x="298" y="630">%</text>
+  <line class="grid" x1="325" y1="640" x2="943" y2="640"/><line class="grid" x1="325" y1="670" x2="943" y2="670"/><line class="grid" x1="325" y1="700" x2="943" y2="700"/><line class="axis" x1="325" y1="728" x2="943" y2="728"/>
+  <path class="areaGreen" d="M325 728 L465 728 L465 716 L520 716 L520 690 L545 690 L545 675 L575 675 L575 654 L630 654 L630 642 L665 642 L665 625 L705 625 L705 610 L765 610 L765 633 L785 633 L785 660 L805 660 L805 684 L900 684 L900 702 L920 702 L920 718 L943 718 L943 728 Z"/>
+  <path class="lineGreen" d="M325 728 L465 728 L465 716 L520 716 L520 690 L545 690 L545 675 L575 675 L575 654 L630 654 L630 642 L665 642 L665 625 L705 625 L705 610 L765 610 L765 633 L785 633 L785 660 L805 660 L805 684 L900 684 L900 702 L920 702 L920 718 L943 718"/>
+  <text class="small" x="334" y="748">00:00</text><text class="small" x="494" y="748">06:00</text><text class="small" x="654" y="748">12:00</text><text class="small" x="814" y="748">18:00</text><text class="small" x="894" y="748">24:00</text>
+
+  <rect class="card shadow" x="985" y="574" width="592" height="190" rx="8"/>
+  <text class="h2" x="1003" y="607">Estado del Ventilador</text>
+  <rect class="barGreen" x="1394" y="596" width="8" height="8" rx="2"/><text class="small" x="1412" y="605">Encendido</text>
+  <rect class="barOff" x="1494" y="596" width="8" height="8" rx="2"/><text class="small" x="1512" y="605">Apagado</text>
+  <text class="small" x="1014" y="652">ON</text><text class="tiny" x="1006" y="667">(Velocidad &gt; 0)</text><text class="small" x="1010" y="710">OFF</text><text class="tiny" x="1002" y="724">(Apagado)</text>
+  <rect class="barOff" x="1080" y="645" width="520" height="62"/>
+  <rect class="barGreen" x="1290" y="645" width="55" height="62"/><rect class="barGreen" x="1370" y="645" width="130" height="62"/>
+  <line class="axis" x1="1080" y1="727" x2="1600" y2="727"/>
+  <text class="small" x="1072" y="746">00:00</text><text class="small" x="1197" y="746">06:00</text><text class="small" x="1322" y="746">12:00</text><text class="small" x="1447" y="746">18:00</text><text class="small" x="1544" y="746">24:00</text>
+
+  <rect class="card shadow" x="280" y="779" width="310" height="185" rx="8"/>
+  <text class="h2" x="298" y="810">Resumen del Dia</text>
+  <text class="red" x="300" y="842" font-family="Arial" font-size="18">↟</text><text class="small" x="328" y="842">Temperatura Promedio</text><text class="red" x="525" y="842" font-family="Arial" font-size="13">21.6 C</text>
+  <line class="axis" x1="298" y1="855" x2="570" y2="855"/>
+  <text class="red" x="300" y="874" font-family="Arial" font-size="18">↑</text><text class="small" x="328" y="874">Temperatura Maxima</text><text class="red" x="525" y="874" font-family="Arial" font-size="13">27.4 C</text>
+  <line class="axis" x1="298" y1="887" x2="570" y2="887"/>
+  <text class="blue" x="300" y="906" font-family="Arial" font-size="18">↓</text><text class="small" x="328" y="906">Temperatura Minima</text><text class="blue" x="530" y="906" font-family="Arial" font-size="13">16.2 C</text>
+  <line class="axis" x1="298" y1="919" x2="570" y2="919"/>
+  <text class="green" x="300" y="938" font-family="Arial" font-size="18">◷</text><text class="small" x="328" y="938">Tiempo Encendido</text><text class="green" x="535" y="938" font-family="Arial" font-size="13">2h 15m</text>
+
+  <rect class="card shadow" x="605" y="779" width="420" height="185" rx="8"/>
+  <text class="h2" x="623" y="810">Eventos Automaticos</text>
+  <circle cx="635" cy="842" r="15" fill="#ffe5ea"/><text class="red" x="628" y="849" font-family="Arial" font-size="18">↑</text><text class="text" x="662" y="840">15:28  Temperatura supero el umbral</text><text class="small" x="716" y="862">Ventilador activado automaticamente</text>
+  <circle cx="635" cy="892" r="15" fill="#e5f7ec"/><text class="green" x="626" y="899" font-family="Arial" font-size="18">✣</text><text class="text" x="662" y="890">15:28  Ventilador encendido (50%)</text><text class="small" x="716" y="912">Modo automatico</text>
+  <circle cx="635" cy="940" r="15" fill="#eaf1ff"/><text class="blue" x="628" y="947" font-family="Arial" font-size="18">↓</text><text class="text" x="662" y="938">14:42  Temperatura bajo el umbral</text><text class="small" x="716" y="960">Ventilador apagado automaticamente</text>
+
+  <rect class="card shadow" x="1040" y="779" width="537" height="185" rx="8"/>
+  <text class="h2" x="1058" y="810">Distribucion de Fuentes de Control</text>
+  <circle cx="1148" cy="884" r="78" fill="#35b96b"/>
+  <path d="M1148 884 L1148 806 A78 78 0 0 1 1222 910 Z" fill="#35b96b"/>
+  <path d="M1148 884 L1222 910 A78 78 0 0 1 1091 938 Z" fill="#f59e0b"/>
+  <path d="M1148 884 L1091 938 A78 78 0 0 1 1110 815 Z" fill="#3b82f6"/>
+  <circle cx="1148" cy="884" r="33" fill="#fff"/>
+  <text class="white" x="1167" y="934" font-family="Arial" font-size="16" font-weight="700">70%</text>
+  <text class="white" x="1074" y="883" font-family="Arial" font-size="16" font-weight="700">20%</text>
+  <text class="white" x="1111" y="828" font-family="Arial" font-size="16" font-weight="700">10%</text>
+  <rect x="1300" y="830" width="12" height="12" rx="2" fill="#35b96b"/><text class="text" x="1322" y="842">Automatico</text><text class="text" x="1495" y="842">70%</text>
+  <rect x="1300" y="867" width="12" height="12" rx="2" fill="#f59e0b"/><text class="text" x="1322" y="879">Alexa / Voz</text><text class="text" x="1495" y="879">20%</text>
+  <rect x="1300" y="904" width="12" height="12" rx="2" fill="#3b82f6"/><text class="text" x="1322" y="916">Manual</text><text class="text" x="1495" y="916">10%</text>
+  <text class="small" x="1300" y="952">Basado en el tiempo total de operacion del dia.</text>
+</svg>
