@@ -68,15 +68,13 @@ No se encontraron archivos de backend Lambda, configuracion exportada de Alexa n
 
 | ID | Requerimiento | Descripcion |
 | --- | --- | --- |
-| RNF-01 | Seguridad | La comunicacion entre ESP32 y AWS IoT Core debe usar TLS con certificados de dispositivo. |
 | RNF-02 | Disponibilidad | El firmware debe intentar reconectarse a AWS si se pierde la conexion MQTT. |
-| RNF-03 | Rendimiento | La pantalla se actualiza cada 2 segundos y el modo automatico evalua cambios cada 2 segundos. |
-| RNF-04 | Eficiencia de red | La publicacion a AWS ocurre ante cambios significativos o cada 10 minutos. |
-| RNF-05 | Usabilidad | El usuario puede operar el ventilador por voz, potenciometro y visualizacion local. |
+| RNF-04 | Escritura local | El sistema debe escribir localmente el estado principal del ventilador y las lecturas del sensor en la pantalla OLED. |
+| RNF-05 | Usabilidad | El usuario puede operar el ventilador por voz, potenciometro y escritura local del estado. |
 | RNF-06 | Mantenibilidad | El firmware esta separado en clases: WiFi, sensor, motor, display, potenciometro y AWS Shadow. |
 | RNF-07 | Escalabilidad | DynamoDB permite almacenar telemetria por dispositivo y tiempo. |
 | RNF-08 | Confiabilidad | El potenciometro usa lectura promediada y debounce para evitar cambios falsos. |
-| RNF-09 | Trazabilidad | Los eventos deben quedar asociados a fecha, dispositivo, modo, velocidad y origen del comando. |
+| RNF-09 | Trazabilidad | Los eventos deben quedar asociados a fecha, dispositivo, modo y velocidad. |
 
 ---
 
@@ -125,13 +123,21 @@ La integracion con Alexa se plantea mediante una Skill personalizada. Alexa envi
 
 El diagrama es referencial. Para una implementacion fisica se debe verificar el driver de motor especifico, la alimentacion del motor, la corriente maxima y el uso de tierra comun.
 
-## 2.6 Diagrama de arquitectura del sistema
+## 2.6 Diagrama electronico
 
-![Diagrama de arquitectura](assets/architecture_diagram.svg)
+![Diagrama electronico](assets/electronic_diagram.svg)
 
-## 2.7 Diagramas estructurales y de comportamiento
+Este diagrama electronico representa el esquema de conexion entre el ESP32-WROOM-32, el driver L298N, el motor DC, el regulador LM1117 de 3.3 V, el potenciometro, el sensor DHT11 y la pantalla OLED SSD1306.
 
-### 2.7.1 Diagrama estructural de clases
+## 2.7 Diagrama de arquitectura del sistema
+
+### ***Diagrama de Arquitectura de la Ventiladora Inteligente***
+<p align="center">
+<img src="Diagrams/Diagrama_Electronico.jpg" width="600">
+
+## 2.8 Diagramas estructurales y de comportamiento
+
+### 2.8.1 Diagrama estructural de clases
 
 ```mermaid
 classDiagram
@@ -196,7 +202,7 @@ classDiagram
   main --> AWSShadow
 ```
 
-### 2.7.2 Diagrama de comportamiento: control remoto por Alexa
+### 2.8.2 Diagrama de comportamiento: control remoto por Alexa
 
 ```mermaid
 sequenceDiagram
@@ -219,7 +225,7 @@ sequenceDiagram
   Alexa-->>Usuario: "Listo, velocidad al 50%"
 ```
 
-### 2.7.3 Diagrama de comportamiento: modo automatico
+### 2.8.3 Diagrama de comportamiento: modo automatico
 
 ```mermaid
 stateDiagram-v2
@@ -396,32 +402,30 @@ Los reportes deben convertir la telemetria del ventilador en informacion util pa
 
 # 5. Diseno del Modelo de Datos para DynamoDB
 
-## 5.1 Tabla `VentiladorTelemetry`
+## 5.1 Tabla `Esp32Ventilador`
 
-Tabla principal para guardar telemetria enviada por el ESP32.
+Tabla principal usada por la regla de AWS IoT Core para guardar la telemetria publicada por el Shadow del ESP32.
 
-| Campo | Tipo DynamoDB | Clave | Descripcion |
-| --- | --- | --- | --- |
-| `thingName` | String | PK | Nombre del dispositivo, por ejemplo `Esp32Ventilador` |
-| `timestamp` | String | SK | Fecha/hora ISO 8601 del evento |
-| `epochMs` | Number | - | Marca de tiempo en milisegundos |
-| `date` | String | GSI1PK | Fecha `YYYY-MM-DD` para consultas diarias |
-| `temperature` | Number | - | Temperatura en grados Celsius |
-| `humidity` | Number | - | Humedad relativa |
-| `speed` | Number | - | Velocidad solicitada del motor en porcentaje |
-| `autoMode` | Boolean | - | Modo automatico activo/inactivo |
-| `tempThreshold` | Number | - | Umbral de temperatura configurado |
-| `eventType` | String | - | `reported`, `delta`, `periodic`, `alert` |
-| `source` | String | - | `device`, `alexa`, `manual`, `auto` |
-| `ttl` | Number | - | Expiracion opcional de registros antiguos |
+| Campo | Tipo DynamoDB | Clave | Origen | Descripcion |
+| --- | --- | --- | --- | --- |
+| `VentiladorEsp32Ventilador` | String | PK | `${timestamp()}` en la accion DynamoDB de IoT Core | Identificador unico del registro generado con la marca de tiempo de AWS IoT. |
+| `payload` | Map / JSON | - | Resultado del SQL de la regla IoT Core | Contiene el mensaje procesado: dispositivo, timestamp, temperatura, humedad, velocidad, modo y umbral. |
 
-**Indices sugeridos:**
+**Campos esperados dentro de `payload`:**
 
-| Indice | Partition key | Sort key | Uso |
-| --- | --- | --- | --- |
-| Principal | `thingName` | `timestamp` | Historial por dispositivo |
-| `GSI1_DateIndex` | `date` | `timestamp` | Reportes diarios |
-| `GSI2_EventIndex` | `eventType` | `timestamp` | Auditoria de eventos |
+| Campo | Tipo | Descripcion |
+| --- | --- | --- |
+| `thingName` | String | Nombre del dispositivo, por ejemplo `Esp32Ventilador`. |
+| `epochMs` | Number | Marca de tiempo en milisegundos generada por `timestamp()`. |
+| `temperature` | Number | Temperatura en grados Celsius reportada por el sensor. |
+| `humidity` | Number | Humedad relativa reportada por el sensor. |
+| `speed` | Number | Velocidad actual del ventilador en porcentaje. |
+| `autoMode` | Boolean | Modo automatico activo/inactivo. |
+| `tempThreshold` | Number | Umbral de temperatura configurado. |
+| `eventType` | String | Tipo de evento, por ejemplo `reported`. |
+| `source` | String | Origen del dato, por ejemplo `device`. |
+
+Esta configuracion no usa sort key. La consulta historica se realiza por registros insertados en la tabla y el detalle queda agrupado dentro de `payload`.
 
 ## 5.2 Tabla `VentiladorCommands`
 
@@ -460,17 +464,18 @@ Tabla opcional para almacenar agregados ya calculados.
 
 ```json
 {
-  "thingName": "Esp32Ventilador",
-  "timestamp": "2026-05-24T19:30:00Z",
-  "epochMs": 1779651000000,
-  "date": "2026-05-24",
-  "temperature": 27.4,
-  "humidity": 58.0,
-  "speed": 50,
-  "autoMode": true,
-  "tempThreshold": 30,
-  "eventType": "reported",
-  "source": "device"
+  "VentiladorEsp32Ventilador": "1779651000000",
+  "payload": {
+    "thingName": "Esp32Ventilador",
+    "epochMs": 1779651000000,
+    "temperature": 27.4,
+    "humidity": 58.0,
+    "speed": 50,
+    "autoMode": true,
+    "tempThreshold": 30,
+    "eventType": "reported",
+    "source": "device"
+  }
 }
 ```
 
@@ -490,6 +495,7 @@ Practica4IoT/
 │       ├── architecture_diagram.svg
 │       ├── block_diagram.svg
 │       ├── circuit_diagram.svg
+│       ├── electronic_diagram.svg
 │       └── report_mockups.svg
 └── src/
     ├── main.cpp
@@ -759,7 +765,21 @@ export const handler = async (event) => {
 
 ## 7.4 Regla de AWS IoT para DynamoDB
 
-La regla debe capturar actualizaciones aceptadas del Shadow y escribirlas en `VentiladorTelemetry`.
+La regla captura actualizaciones aceptadas del Shadow y escribe cada mensaje en la tabla `Esp32Ventilador`.
+
+| Campo de la accion | Valor configurado |
+| --- | --- |
+| Tipo de accion | `DynamoDB` |
+| Tabla destino | `Esp32Ventilador` |
+| Partition key | `VentiladorEsp32Ventilador` |
+| Partition key type | `STRING` |
+| Partition key value | `${timestamp()}` |
+| Sort key | No configurada |
+| Columna para el mensaje | `payload` |
+| Operation | `INSERT` |
+| IAM role | `Ventilador` |
+
+El SQL de la regla construye el objeto que AWS IoT Core guarda dentro de la columna `payload`.
 
 ```sql
 SELECT
@@ -769,7 +789,9 @@ SELECT
   state.reported.humidity AS humidity,
   state.reported.speed AS speed,
   state.reported.autoMode AS autoMode,
-  state.reported.tempThreshold AS tempThreshold
+  state.reported.tempThreshold AS tempThreshold,
+  'reported' AS eventType,
+  'device' AS source
 FROM '$aws/things/+/shadow/update/accepted'
 WHERE isUndefined(state.reported) = false
 ```
@@ -780,7 +802,7 @@ WHERE isUndefined(state.reported) = false
 | --- | --- |
 | `THING_NAME` | `Esp32Ventilador` |
 | `AWS_REGION` | `us-east-1` |
-| `TELEMETRY_TABLE` | `VentiladorTelemetry` |
+| `TELEMETRY_TABLE` | `Esp32Ventilador` |
 | `COMMANDS_TABLE` | `VentiladorCommands` |
 
 Permisos IAM minimos para Lambda:
@@ -810,7 +832,7 @@ Permisos IAM minimos para Lambda:
 | P-07 | Control por Shadow | Publicar `desired.speed` desde AWS. | ESP32 recibe delta y actualiza motor. |
 | P-08 | Modo automatico | Activar `autoMode` y configurar `tempThreshold`. | Si temperatura supera umbral, velocidad 50%; caso contrario 0%. |
 | P-09 | Publicacion periodica | Mantener sistema encendido mas de 10 minutos. | Se publica estado aunque no haya cambios significativos. |
-| P-10 | Persistencia DynamoDB | Revisar la tabla luego de una publicacion. | Nuevo item con telemetria del dispositivo. |
+| P-10 | Persistencia DynamoDB | Revisar la tabla `Esp32Ventilador` luego de una publicacion. | Nuevo item con PK `VentiladorEsp32Ventilador` y datos en `payload`. |
 | P-11 | Alexa Skill | Ejecutar frases desde consola de Alexa. | Lambda actualiza Shadow y responde al usuario. |
 
 ## 8.2 Validaciones tecnicas
@@ -863,7 +885,7 @@ Con la implementacion actual del firmware, el sistema debe lograr:
 | Foto del circuito | ESP32, DHT11, OLED, potenciometro y driver conectados. |
 | Captura del monitor serial | Conexion WiFi, AWS y publicaciones MQTT. |
 | Captura de AWS IoT Shadow | Valores `desired` y `reported`. |
-| Captura de DynamoDB | Items almacenados en `VentiladorTelemetry`. |
+| Captura de DynamoDB | Items almacenados en `Esp32Ventilador`. |
 | Captura de Alexa Developer Console | Prueba exitosa de intents. |
 | Foto de pantalla OLED | Temperatura, humedad, velocidad y modo. |
 
@@ -958,19 +980,3 @@ sequenceDiagram
 | `Display.cpp` | Mensajes y pantalla normal OLED |
 | `Potentiometer.cpp` | Entrada analogica filtrada |
 | `WiFiManager.cpp` | Conexion WiFi |
-
-## 12.4 Checklist de entrega
-
-- [x] Requerimientos funcionales y no funcionales.
-- [x] Diagrama de bloques.
-- [x] Diagrama de circuito.
-- [x] Diagrama de arquitectura.
-- [x] Diagramas estructurales y de comportamiento.
-- [x] Diseno de Skill de Alexa.
-- [x] Mockups de reportes.
-- [x] Modelo de datos DynamoDB.
-- [x] Implementacion documentada del firmware.
-- [x] Logica Lambda de referencia.
-- [x] Configuraciones Alexa/AWS.
-- [x] Pruebas y validaciones.
-- [x] Resultados, conclusiones, recomendaciones y anexos.

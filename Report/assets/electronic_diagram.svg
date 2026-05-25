@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Diagrama electronico del ventilador inteligente</title>
+  <desc id="desc">Esquema electronico con ESP32-WROOM-32, driver L298N, motor DC, regulador LM1117 3.3 V, potenciometro, DHT11 y pantalla OLED SSD1306.</desc>
+  <defs>
+    <style>
+      .bg{fill:#fbf7ed}
+      .grid{stroke:#d8d1c3;stroke-width:1;stroke-dasharray:1 15}
+      .frame{fill:none;stroke:#7f1d1d;stroke-width:2}
+      .wire{fill:none;stroke:#15803d;stroke-width:2}
+      .wire2{fill:none;stroke:#7f1d1d;stroke-width:2}
+      .comp{fill:#fff9b8;stroke:#7f1d1d;stroke-width:2}
+      .pin{font-family:Consolas, monospace;font-size:14px;fill:#7f1d1d}
+      .label{font-family:Consolas, monospace;font-size:16px;fill:#0f766e}
+      .small{font-family:Consolas, monospace;font-size:13px;fill:#0f766e}
+      .net{fill:#fff7ed;stroke:#7f1d1d;stroke-width:1.6}
+      .netText{font-family:Consolas, monospace;font-size:13px;fill:#7f1d1d}
+      .node{fill:#15803d}
+      .x{font-family:Consolas, monospace;font-size:18px;fill:#1d4ed8}
+      .gnd{stroke:#7f1d1d;stroke-width:1.6;fill:none}
+      .power{stroke:#7f1d1d;stroke-width:1.6;fill:none}
+    </style>
+    <pattern id="grid" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path class="grid" d="M 16 0 L 0 0 0 16"/>
+    </pattern>
+  </defs>
+
+  <rect class="bg" width="1200" height="680"/>
+  <rect fill="url(#grid)" width="1200" height="680"/>
+  <rect class="frame" x="6" y="8" width="1188" height="662"/>
+  <line class="frame" x1="515" y1="8" x2="515" y2="670"/>
+  <line class="frame" x1="805" y1="8" x2="805" y2="670"/>
+  <line class="frame" x1="6" y1="410" x2="805" y2="410"/>
+  <line class="frame" x1="515" y1="185" x2="805" y2="185"/>
+  <line class="frame" x1="515" y1="410" x2="805" y2="410"/>
+
+  <text class="small" x="30" y="32">+12V</text>
+  <path class="power" d="M48 72 L48 42 M42 52 L48 42 L54 52"/>
+  <text class="small" x="250" y="32">+5V</text>
+  <path class="power" d="M260 114 L260 42 M254 52 L260 42 L266 52"/>
+
+  <path class="wire" d="M48 72 L48 78 L240 78 L240 120"/>
+  <path class="wire" d="M260 114 L260 120"/>
+  <text class="label" x="114" y="70">SW1A</text>
+  <text class="small" x="83" y="88">Switch ON/OFF</text>
+  <line class="wire2" x1="110" y1="85" x2="130" y2="85"/>
+  <line class="wire2" x1="152" y1="85" x2="177" y2="85"/>
+  <circle class="node" cx="110" cy="85" r="3"/>
+  <circle class="node" cx="177" cy="85" r="3"/>
+
+  <circle class="comp" cx="42" cy="184" r="28"/>
+  <text class="label" x="26" y="191">M</text>
+  <text class="label" x="76" y="182">M1</text>
+  <text class="small" x="76" y="202">Motor_DC</text>
+  <text class="pin" x="24" y="152">+</text>
+  <text class="pin" x="26" y="224">-</text>
+
+  <rect class="comp" x="175" y="120" width="170" height="205"/>
+  <text class="label" x="254" y="148">U1</text>
+  <text class="label" x="220" y="172">L298N</text>
+  <text class="pin" x="182" y="190">OUT1</text>
+  <text class="pin" x="182" y="212">OUT2</text>
+  <text class="pin" x="182" y="246">OUT3</text>
+  <text class="pin" x="182" y="268">OUT4</text>
+  <text class="pin" x="304" y="170">IN1</text>
+  <text class="pin" x="304" y="190">IN2</text>
+  <text class="pin" x="304" y="214">EnA</text>
+  <text class="pin" x="304" y="248">IN3</text>
+  <text class="pin" x="304" y="270">IN4</text>
+  <text class="pin" x="304" y="292">EnB</text>
+  <text class="pin" x="234" y="132">Vs</text>
+  <text class="pin" x="252" y="132">Vss</text>
+  <text class="pin" x="244" y="326">GND</text>
+  <line class="wire" x1="70" y1="162" x2="155" y2="162"/>
+  <line class="wire" x1="155" y1="162" x2="175" y2="190"/>
+  <line class="wire" x1="70" y1="206" x2="155" y2="206"/>
+  <line class="wire" x1="155" y1="206" x2="175" y2="212"/>
+  <line class="wire" x1="345" y1="170" x2="415" y2="170"/>
+  <line class="wire" x1="345" y1="214" x2="415" y2="214"/>
+  <text class="x" x="372" y="193">x</text>
+  <text class="x" x="372" y="250">x</text>
+  <text class="x" x="372" y="272">x</text>
+  <text class="x" x="372" y="294">x</text>
+  <path class="gnd" d="M260 325 L260 360 M248 360 L272 360 M252 368 L268 368 M256 376 L264 376"/>
+  <text class="small" x="245" y="392">GND</text>
+  <path class="net" d="M415 160 L470 160 L485 170 L470 180 L415 180 Z"/>
+  <text class="netText" x="426" y="175">ONOFFV</text>
+  <path class="net" d="M415 204 L470 204 L485 214 L470 224 L415 224 Z"/>
+  <text class="netText" x="431" y="219">POTV</text>
+
+  <text class="small" x="580" y="28">+5V</text>
+  <path class="power" d="M592 96 L592 42 M586 52 L592 42 L598 52"/>
+  <text class="small" x="708" y="28">+3.3V</text>
+  <path class="power" d="M724 96 L724 42 M718 52 L724 42 L730 52"/>
+  <rect class="comp" x="625" y="78" width="90" height="58"/>
+  <text class="label" x="648" y="72">U3</text>
+  <text class="small" x="614" y="102">LM1117DT-3.3</text>
+  <text class="pin" x="638" y="124">GND</text>
+  <text class="pin" x="665" y="93">VI</text>
+  <text class="pin" x="696" y="102">VO</text>
+  <path class="gnd" d="M670 136 L670 166 M658 166 L682 166 M662 174 L678 174 M666 182 L674 182"/>
+  <text class="small" x="646" y="176">GND</text>
+
+  <text class="small" x="640" y="250">+3.3V</text>
+  <path class="power" d="M662 300 L662 264 M656 274 L662 264 L668 274"/>
+  <rect class="comp" x="646" y="305" width="22" height="42"/>
+  <line class="wire" x1="668" y1="326" x2="740" y2="326"/>
+  <path class="gnd" d="M657 347 L657 377 M645 377 L669 377 M649 385 L665 385 M653 393 L661 393"/>
+  <text class="label" x="584" y="320">Potentiometer</text>
+  <text class="small" x="603" y="340">1K Ohmm</text>
+  <path class="net" d="M740 316 L790 316 L803 326 L790 336 L740 336 Z"/>
+  <text class="netText" x="748" y="331">POTSELECT</text>
+  <text class="pin" x="681" y="320">2</text>
+
+  <text class="small" x="620" y="455">+5V</text>
+  <path class="power" d="M650 500 L650 468 M644 478 L650 468 L656 478"/>
+  <rect class="comp" x="612" y="504" width="70" height="70"/>
+  <text class="label" x="633" y="498">U5</text>
+  <text class="small" x="625" y="538">DHT11</text>
+  <text class="pin" x="620" y="526">VDD</text>
+  <text class="pin" x="620" y="548">DATA</text>
+  <text class="pin" x="620" y="570">GND</text>
+  <line class="wire" x1="682" y1="548" x2="740" y2="548"/>
+  <path class="net" d="M740 538 L785 538 L798 548 L785 558 L740 558 Z"/>
+  <text class="netText" x="751" y="553">TEMP</text>
+  <path class="gnd" d="M650 574 L650 612 M638 612 L662 612 M642 620 L658 620 M646 628 L654 628"/>
+  <text class="small" x="634" y="632">GND</text>
+
+  <rect class="comp" x="202" y="468" width="172" height="170"/>
+  <rect fill="none" stroke="#7f1d1d" stroke-width="1.5" x="232" y="500" width="75" height="98"/>
+  <text class="label" x="225" y="456">SSD1</text>
+  <text class="small" x="224" y="476">SSD1306OLED 0.96</text>
+  <text class="pin" x="320" y="535">VCC</text>
+  <text class="pin" x="320" y="555">GND</text>
+  <text class="pin" x="320" y="575">SCL</text>
+  <text class="pin" x="320" y="595">SDA</text>
+  <line class="wire" x1="374" y1="535" x2="430" y2="535"/>
+  <line class="wire" x1="374" y1="575" x2="430" y2="575"/>
+  <line class="wire" x1="374" y1="595" x2="430" y2="595"/>
+  <path class="net" d="M430 565 L475 565 L488 575 L475 585 L430 585 Z"/>
+  <text class="netText" x="443" y="580">SCL</text>
+  <path class="net" d="M430 585 L475 585 L488 595 L475 605 L430 605 Z"/>
+  <text class="netText" x="443" y="600">SDA</text>
+  <text class="small" x="415" y="518">+3.3V</text>
+  <path class="power" d="M430 535 L430 495 M424 505 L430 495 L436 505"/>
+  <path class="gnd" d="M400 555 L430 555 M430 555 L430 585 M418 585 L442 585 M422 593 L438 593 M426 601 L434 601"/>
+  <text class="small" x="438" y="565">GND</text>
+
+  <text class="small" x="938" y="56">+3.3V</text>
+  <path class="power" d="M958 108 L958 70 M952 80 L958 70 L964 80"/>
+  <rect class="comp" x="870" y="120" width="178" height="455"/>
+  <text class="label" x="970" y="108">U2</text>
+  <text class="label" x="973" y="128">ESP32-WROOM-32</text>
+  <text class="pin" x="858" y="150">3</text>
+  <text class="pin" x="884" y="150">EN</text>
+  <text class="pin" x="858" y="180">4</text>
+  <text class="pin" x="884" y="180">SENSOR_VP</text>
+  <text class="pin" x="858" y="200">5</text>
+  <text class="pin" x="884" y="200">SENSOR_VN</text>
+  <text class="pin" x="858" y="420">21</text>
+  <text class="pin" x="884" y="420">SD0/SD0</text>
+  <text class="pin" x="858" y="440">22</text>
+  <text class="pin" x="884" y="440">SDI/SD1</text>
+  <text class="pin" x="858" y="460">17</text>
+  <text class="pin" x="884" y="460">SHD/SD2</text>
+  <text class="pin" x="858" y="480">16</text>
+  <text class="pin" x="884" y="480">SWP/SD3</text>
+  <text class="pin" x="858" y="500">20</text>
+  <text class="pin" x="884" y="500">SCK/CLK</text>
+  <text class="pin" x="858" y="520">19</text>
+  <text class="pin" x="884" y="520">SCS/CMD</text>
+  <text class="pin" x="946" y="112">2</text>
+  <text class="pin" x="962" y="142">VDD</text>
+  <text class="pin" x="1038" y="150">25</text>
+  <text class="pin" x="998" y="150">IO0</text>
+  <text class="pin" x="1038" y="170">35</text>
+  <text class="pin" x="998" y="170">TXD0/IO1</text>
+  <text class="pin" x="1038" y="190">34</text>
+  <text class="pin" x="998" y="190">IO2</text>
+  <text class="pin" x="1038" y="210">34</text>
+  <text class="pin" x="998" y="210">RXD0/IO3</text>
+  <text class="pin" x="1038" y="230">29</text>
+  <text class="pin" x="998" y="230">IO4</text>
+  <text class="pin" x="1038" y="250">24</text>
+  <text class="pin" x="998" y="250">IO5</text>
+  <text class="pin" x="1038" y="270">14</text>
+  <text class="pin" x="998" y="270">IO12</text>
+  <text class="pin" x="1038" y="290">16</text>
+  <text class="pin" x="998" y="290">IO13</text>
+  <text class="pin" x="1038" y="310">13</text>
+  <text class="pin" x="998" y="310">IO14</text>
+  <text class="pin" x="1038" y="330">23</text>
+  <text class="pin" x="998" y="330">IO15</text>
+  <text class="pin" x="1038" y="350">27</text>
+  <text class="pin" x="998" y="350">IO16</text>
+  <text class="pin" x="1038" y="370">28</text>
+  <text class="pin" x="998" y="370">IO17</text>
+  <text class="pin" x="1038" y="390">30</text>
+  <text class="pin" x="998" y="390">IO18</text>
+  <text class="pin" x="1038" y="410">31</text>
+  <text class="pin" x="998" y="410">IO19</text>
+  <text class="pin" x="1038" y="430">33</text>
+  <text class="pin" x="998" y="430">IO21</text>
+  <text class="pin" x="1038" y="450">36</text>
+  <text class="pin" x="998" y="450">IO22</text>
+  <text class="pin" x="1038" y="470">37</text>
+  <text class="pin" x="998" y="470">IO23</text>
+  <text class="pin" x="1038" y="490">10</text>
+  <text class="pin" x="998" y="490">IO25</text>
+  <text class="pin" x="1038" y="510">11</text>
+  <text class="pin" x="998" y="510">IO26</text>
+  <text class="pin" x="1038" y="530">12</text>
+  <text class="pin" x="998" y="530">IO27</text>
+  <text class="pin" x="1038" y="550">8</text>
+  <text class="pin" x="998" y="550">IO34</text>
+  <text class="pin" x="1038" y="570">7</text>
+  <text class="pin" x="998" y="570">IO35</text>
+  <text class="pin" x="942" y="596">1</text>
+  <text class="pin" x="930" y="588">GND</text>
+  <path class="gnd" d="M956 575 L956 626 M944 626 L968 626 M948 634 L964 634 M952 642 L960 642"/>
+  <text class="small" x="940" y="654">GND</text>
+  <text class="x" x="835" y="155">x</text>
+  <text class="x" x="835" y="190">x</text>
+  <text class="x" x="835" y="210">x</text>
+  <text class="x" x="835" y="430">x</text>
+  <text class="x" x="835" y="450">x</text>
+  <text class="x" x="835" y="470">x</text>
+  <text class="x" x="835" y="490">x</text>
+  <text class="x" x="835" y="510">x</text>
+  <text class="x" x="835" y="530">x</text>
+  <path class="net" d="M1048 220 L1095 220 L1110 230 L1095 240 L1048 240 Z"/>
+  <text class="netText" x="1060" y="235">TEMP</text>
+  <path class="net" d="M1048 240 L1095 240 L1110 250 L1095 260 L1048 260 Z"/>
+  <text class="netText" x="1060" y="255">POTV</text>
+  <path class="net" d="M1048 380 L1105 380 L1120 390 L1105 400 L1048 400 Z"/>
+  <text class="netText" x="1060" y="395">ONOFFV</text>
+  <path class="net" d="M1048 420 L1090 420 L1105 430 L1090 440 L1048 440 Z"/>
+  <text class="netText" x="1060" y="435">SDA</text>
+  <path class="net" d="M1048 440 L1090 440 L1105 450 L1090 460 L1048 460 Z"/>
+  <text class="netText" x="1060" y="455">SCL</text>
+  <path class="net" d="M1048 560 L1125 560 L1140 570 L1125 580 L1048 580 Z"/>
+  <text class="netText" x="1058" y="575">POTSELECT</text>
+</svg>
